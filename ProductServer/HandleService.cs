@@ -7,9 +7,10 @@ namespace ProductServer
 {
     public class HandleService: ProductInfo.ProductInfoBase {
 
-        public override Task<ProductID> AddProduct(Product request, ServerCallContext context)
+        public override async Task<ProductID> AddProduct(Product request, ServerCallContext context)
         {
-            return Task<ProductID>.Factory.StartNew(() => new ProductID { Value = Guid.NewGuid().ToString() });
+            await Task.Delay(10000);
+            return await Task<ProductID>.Factory.StartNew(() => new ProductID { Value = Guid.NewGuid().ToString() });
         }
 
         public override Task<Product> GetProduct(ProductID request, ServerCallContext context)
