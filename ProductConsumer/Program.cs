@@ -1,6 +1,8 @@
 ﻿using Ecommerce;
 using Grpc.Core;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using static Ecommerce.ProductInfo;
 
@@ -11,6 +13,7 @@ namespace ProductConsumer
         async static Task Main(string[] args)
         {
             var channel = new Channel("192.168.0.5", 5001, ChannelCredentials.Insecure);
+            await channel.ConnectAsync(DateTime.UtcNow.AddSeconds(3));
             var client = new ProductInfoClient(channel);
 
             Console.WriteLine("insert \"get\" or \"add\"");
@@ -26,7 +29,7 @@ namespace ProductConsumer
 
         public static async Task AddProduct(ProductInfoClient client)
         {
-             var result = await client.AddProductAsync(new Product());
+             var result = await client.AddProductAsync(new Product(), deadline:DateTime.UtcNow.AddSeconds(11));
             Console.WriteLine("########### RESULT ###########");
             Console.WriteLine($"productId: {result.Value}");
         }
