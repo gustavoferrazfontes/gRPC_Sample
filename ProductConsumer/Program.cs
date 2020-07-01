@@ -1,10 +1,8 @@
-﻿using Ecommerce;
+﻿using Ecommerce.Client;
 using Grpc.Core;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using static Ecommerce.ProductInfo;
+using static Ecommerce.Client.ProductInfo;
 
 namespace ProductConsumer
 {

@@ -1,9 +1,8 @@
-﻿using Ecommerce;
+﻿using Ecommerce.Server;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
 
